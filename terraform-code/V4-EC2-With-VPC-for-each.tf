@@ -5,6 +5,7 @@ provider "aws" {
 resource "aws_instance" "demo-server" {
     ami = "ami-0dee22c13ea7a9a67"
     instance_type = "t2.micro"
+    key_name = "WorkshopKP"
     # security_groups = [ "demo-sg" ]
     vpc_security_group_ids = [ aws_security_group.demo-sg.id ]
     subnet_id = aws_subnet.demo-public-subnet-01.id
@@ -23,6 +24,14 @@ resource "aws_security_group" "demo-sg" {
     description      = "Shh access"
     from_port        = 22
     to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    }
+  
+  ingress {
+    description      = "Jenkins port"
+    from_port        = 8080
+    to_port          = 8080
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     }
