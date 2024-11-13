@@ -105,7 +105,7 @@ resource "aws_route_table_association" "demo-rta-public-subnet-02" {
 
 module "sgs"{
   source = "../sg_eks"
-  vpc_id = aws_vpc.demo-vpc.vpc_id
+  vpc_id = aws_vpc.demo-vpc.id
 }
 
 module "eks" {
