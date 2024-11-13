@@ -31,4 +31,3 @@
     service:
       name: jenkins
       enabled: yes 
----
