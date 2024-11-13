@@ -34,3 +34,8 @@
         state: started
 
     - name: Give 777 permissions on /var/run/docker.sock
+       ansible.builtin.file:
+        path: /var/run/docker.sock
+        mode: '0777'
+        state: file
+
